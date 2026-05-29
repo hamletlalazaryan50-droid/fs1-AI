@@ -2,9 +2,137 @@
 @import url("normalize.css");
 
 :root {
-  background-color: #0a121f;
+  --dark-blue: #0a121f;
   --blue: #3a68b8;
   --white: #ffffff;
   --gray70: #b5b7bb;
   --gray60: #9c9fa5;
+  --duration: 0.3s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+p {
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.btn {
+  border-radius: 5px;
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  transition: opacity var(--duration) ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+}
+
+nav {
+  background-color: var(--dark-blue);
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    gap: 24px;
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      h3 {
+        color: var(--blue);
+        font-weight: 600;
+      }
+    }
+
+    .nav-menu {
+      .nav-mobile-btn {
+        display: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        svg {
+          fill: var(--white);
+        }
+      }
+      ul {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          a {
+            display: block;
+            color: var(--white);
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity var(--duration) ease;
+          }
+        }
+
+        & li a:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      gap: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav .container .nav-menu .nav-mobile-btn {
+    display: block;
+  }
+
+  nav .container .nav-menu ul {
+    display: none;
+  }
+
+  nav .container .nav-sign-in {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .nav-logo {
+    svg {
+      width: 35px;
+      height: 35px;
+    }
+    gap: 12px;
+    h3 {
+      font-size: 16px;
+    }
+  }
 }
